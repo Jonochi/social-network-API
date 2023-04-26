@@ -1,6 +1,7 @@
 const { Thought, User } = require('../models');
 
 module.exports = {
+  
   // Get all Users
   async getUsers(req, res) {
     try {
@@ -10,6 +11,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   // Get a User
   async getSingleUser(req, res) {
     try {
@@ -25,6 +27,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   // Create a user
   async createUser(req, res) {
     try {
@@ -35,6 +38,7 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
+
   // Delete a user
   async deleteUser(req, res) {
     try {
@@ -50,6 +54,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   // Update a user
   async updateUser(req, res) {
     try {

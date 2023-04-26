@@ -2,6 +2,7 @@ const { ObjectId } = require('mongoose').Types;
 const { Thought, User } = require('../models');
 
 module.exports = {
+
   // Get all thoguhts
   async getThoughts(req, res) {
     try {
@@ -11,6 +12,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   // Get a single thought
   async getSingleThought(req, res) {
     try {
@@ -27,6 +29,7 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
+
   // create a new thought
   async createThought(req, res) {
     try {
@@ -41,6 +44,26 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  // Update existing thought
+  async updateThought(req, res) {
+    try {
+      const updatedThought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $set: req.body },
+        { new: true, runValidators: true }
+      );
+
+      if (!updatedThought) {
+        return res.status(404).json({ message: 'No thought found with that ID :(' });
+      }
+
+      res.json(updatedThought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
   // Delete a thought and remove it from the user
   async deleteThought(req, res) {
     try {
@@ -95,7 +118,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove reactions from a thought
+  
+  // Remove all reactions from a thought
   async removeAllReactions(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -114,6 +138,7 @@ module.exports = {
     }
   }, 
 
+  // Remove one action by ID from a thought
   async removeReaction (req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
