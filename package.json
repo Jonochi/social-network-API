@@ -1,0 +1,26 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "## Module 18 Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed",
+    "heroku-postbuild": "node utils/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonochi/social-network-API.git"
+  },
+  "author": "Tana Larrabee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonochi/social-network-API/issues"
+  },
+  "homepage": "https://github.com/Jonochi/social-network-API#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.4"
+  }
+}
